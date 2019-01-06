@@ -128,7 +128,7 @@ int cuentaentradas(FILE *fichero)
 PERCEPTRON procesamiento(PERCEPTRON perc, int c)
 {
     int i,j,k;
-    float suma;
+    float suma = 0;
     if(!c)
     {
         for(j=0;j<perc.nuEntrada;j++)
@@ -138,12 +138,14 @@ PERCEPTRON procesamiento(PERCEPTRON perc, int c)
     }
     for(i=0;i<perc.capas[c].nuNeu;i++){
         for(j=0;j<perc.nuEntrada;j++){
-            for(k=0, suma=0;k<perc.capas[c].nuNeu;k++) {
+            for(k=0;k<perc.capas[c].nuNeu;k++) {
                 suma += perc.salida[i] * perc.capas[c].matrizPesos[j][k];
             }
         }
         perc.salida[i] = suma;
+        suma = 0;
     }
+
 
     for(j=0;j<perc.capas[c].nuNeu;j++){
         perc.salida[j] = perc.salida[j] - perc.capas[c].umbral[j];
