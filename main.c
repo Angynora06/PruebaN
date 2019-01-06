@@ -23,6 +23,7 @@ typedef struct
     float salida[5];
 }PERCEPTRON;
 
+
 PERCEPTRON cargaperceptron(PERCEPTRON perc, FILE *fichero);
 int cuentaentradas(FILE *fichero);
 PERCEPTRON procesamiento(PERCEPTRON perc, int c);
@@ -45,9 +46,9 @@ int main(){
         printf("ERROR EN LA LECTURA DEL FICHERO DE ENTRADAS. (2)");
         return(2);
     }
+  
     nuEnt=cuentaentradas(fichero);
     rewind(fichero);
-
 
     printf("EJECUCION DEL PERCEPTRON\n");
     printf("========================\n");
@@ -71,13 +72,10 @@ int main(){
                     printf("%f, ", perc.salida[k]);
                 printf("%f)\n", perc.salida[k]);
             }
-
-
-
         }
     }
-
 }
+
 
 PERCEPTRON cargaperceptron(PERCEPTRON perc, FILE *fichero)
 {
@@ -114,6 +112,8 @@ PERCEPTRON cargaperceptron(PERCEPTRON perc, FILE *fichero)
     return(perc);
 
 }
+
+
 int cuentaentradas(FILE *fichero)
 {
     int aux=0;
@@ -123,6 +123,7 @@ int cuentaentradas(FILE *fichero)
         aux++;
     return(aux);
 }
+
 
 PERCEPTRON procesamiento(PERCEPTRON perc, int c)
 {
